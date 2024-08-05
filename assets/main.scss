@@ -1,0 +1,103 @@
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+@import "./styles/content.scss";
+@import "./styles/xs.scss";
+
+@font-face {
+    font-family: "Archivo";
+    src:
+        local("Archivo"),
+        url("assets/fonts/archivo-regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ArchivoItalic";
+    src:
+        local("ArchivoItalic"),
+        url("assets/fonts/archivo-italic.ttf") format("truetype");
+}
+
+.guille-font {
+    font-family: "Archivo", sans-serif;
+}
+
+.guille-font-italic {
+    font-family: "ArchivoItalic", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: var(--surface-section) !important;
+}
+
+.layout-content {
+    padding: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+// xs (0 - 575px)
+
+@media screen and (max-width: 575px) {
+    .layout-content {
+        padding: 1rem !important;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1102px) {
+    .layout-content {
+        .block-section {
+            display: block;
+            width: 678px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@media screen and (min-width: 1103px) and (max-width: 1920px) {
+    .layout-content {
+        .block-section {
+            display: block;
+            width: 878px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@media screen and (min-width: 1921px) {
+    .layout-content {
+        .block-section {
+            display: block;
+            width: 978px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .layout-content {
+        padding: 2rem 1rem;
+    }
+}
+
+.p-card .p-card-body {
+    padding: 1rem !important;
+}
+
+.p-card-title {
+    font-size: 1.3rem !important;
+}
+
+.p-card-content {
+    padding: 0rem 0 !important;
+    padding-top: 1rem !important;
+}
+
+.p-card {
+    border: var(--surface-d) 1px solid;
+    box-shadow: none !important;
+    border-radius: 2px;
+}

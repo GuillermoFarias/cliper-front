@@ -1,0 +1,25 @@
+.block-section {
+    margin-bottom: 4rem;
+}
+
+.block-header {
+    padding: 1rem 2rem;
+    background-color: var(--surface-section);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid var(--surface-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.block-content {
+    padding: 0;
+}
+
+@media screen and (max-width: 575px) {
+    .block-header {
+        flex-direction: column;
+        align-items: start;
+    }
+}
