@@ -1,11 +1,12 @@
 # Nuxt 3 builder
-FROM node:lts as builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm run build
+RUN yarn install --frozen-lockfile
+RUN yarn build
 
 # Nuxt 3 production
 FROM node:lts
