@@ -1,42 +1,44 @@
-# Etapa 1: Construcción
-FROM node:22-alpine AS builder
+# Etapa de construcción
+FROM node:18 AS build
 
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de la aplicación
+# Copia los archivos del proyecto
 COPY package.json yarn.lock ./
+COPY nuxt.config.ts ./
+COPY assets ./assets
+COPY composables ./composables
+COPY layouts ./layouts
+COPY pages ./pages
+COPY public ./public
+COPY server ./server
+COPY store ./store
+COPY tsconfig.json ./
 
 # Instala las dependencias
 RUN yarn install
 
-# Copia el resto de los archivos de la aplicación
-COPY . .
-
-# Construye la aplicación Nuxt para producción
+# Construye la aplicación
 RUN yarn build
 
-# Etapa 2: Ejecución
-FROM node:22-alpine
+# Etapa de producción
+FROM node:18 AS production
 
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia las dependencias de producción
-COPY --from=builder /app/node_modules ./node_modules
+# Copia los archivos necesarios desde la etapa de construcción
+COPY --from=build /app/.nuxt ./.nuxt
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/static ./static
+COPY --from=build /app/package.json ./package.json
 
-# Copia la aplicación Nuxt construida
-COPY --from=builder /app/.nuxt ./.nuxt
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/nuxt.config.ts ./nuxt.config.ts
+# Instala solo las dependencias de producción
+RUN yarn install --production
 
-# Establece las variables de entorno necesarias para producción
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=3000
-ENV NODE_ENV=production
-
-# Expone el puerto
+# Expone el puerto en el que la aplicación se ejecutará
 EXPOSE 3000
 
-# Comando por defecto para iniciar la aplicación
+# Define el comando para ejecutar la aplicación
 CMD ["yarn", "start"]
