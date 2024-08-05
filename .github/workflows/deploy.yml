@@ -90,4 +90,4 @@ jobs:
             -v $HOME/.kube:/root/.kube \
             alpine:latest \
             sh -c "apk add --no-cache kubectl && \
-                   kubectl set image deployment/cliper-front cliper-api=ewr.vultrcr.com/cliper/cliper-front:${{ env.COMMIT_SHORT_SHA }} --namespace cliper"
+                   kubectl set image deployment/cliper-front cliper-front=ewr.vultrcr.com/cliper/cliper-front:${{ env.COMMIT_SHORT_SHA }} --namespace cliper"
