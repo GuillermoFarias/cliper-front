@@ -97,8 +97,9 @@ const copyToClipboard = () => {
             class="absolute top-0 left-0 w-auto h-full block md:w-full" />
 
         <div class="text-center my-6 relative">
-            <div class="text-6xl text-white font-bold mb-1">Cliper
-                <i class="pi pi-paperclip text-4xl text-white"></i>
+            <div class="text-6xl text-white font-bold mb-1">
+                <i class="pi pi-paperclip text-5xl text-white"></i>
+                Cliper
             </div>
             <div class="text-6xl text-primary font-bold mb-4">Cut all, Share better</div>
             <p class="mt-0 mb-4 line-height-3 text-center mx-auto text-white" style="max-width:500px">A little demo of
